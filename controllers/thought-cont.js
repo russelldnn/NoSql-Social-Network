@@ -59,5 +59,28 @@ const thoughtCont = {
     
     },
 
-    
-}
+    addReaction({ params, body }, res) {
+        Thought.findOneAndUpdate(
+            {_id: params.thoughtId},
+            {$addToSet: {reactions: body}},
+            {new: true, runValidators: true}
+        )
+        .then((data) => res.json(data))
+        .catch((err) => { throw err});
+    },
+
+
+    deleteReaction({ params }, res) {
+        Thought.findOneAndUpdate(
+          { _id: params.thoughtId },
+          { $pull: { reactions: { reactionId: params.reactionId } } },
+          { new: true }
+        )
+          .then((data) => res.json(data))
+          .catch((err) => {throw (err)});
+      },
+
+     
+};
+
+module.exports = thoughtCont;
