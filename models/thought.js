@@ -3,7 +3,7 @@ const {Schema, model, Types} = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 
-
+//thought model to set what each component is looking for
 const thoughtSchema = new Schema(
     {
         thoughtText: {
@@ -35,7 +35,7 @@ const thoughtSchema = new Schema(
     }
 );
 
-
+//in this context reactions are comments
 const reactionSchema = new Schema(
     {
         reactionId: {

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const apiRoutes = require("./api");
-
+//top level for path
 router.use("/api", apiRoutes);
 
 router.use((req, res) => {
