@@ -1,10 +1,10 @@
-const {schema, model, types} = require('mongoose');
+const {Schema, model, Types} = require('mongoose');
 //borrowed date formatting util
 const dateFormat = require('../utils/dateFormat');
 
 
 
-const thoughtSchema = new schema(
+const thoughtSchema = new Schema(
     {
         thoughtText: {
             type: String,
@@ -36,5 +36,45 @@ const thoughtSchema = new schema(
 );
 
 
-const reactionSchema = new schema()
+const reactionSchema = new Schema(
+    {
+        reactionId: {
+            type: Schema.Types.ObjectId,
+            default: () => new Types.ObjectId(),
+        },
+
+        reactionBody: {
+            type: String,
+            required: true,
+            maxlength: 280,
+        },
+
+        username: {
+            type: String,
+            required: true,
+        },
+
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: (timestamp) => dateFormat(timestamp),
+        },
+    },
+    {
+        toJSON: {
+            getters: true,
+        },
+        id:false,
+    }
+);
+
+
+thoughtSchema.virtual("reactionCount").get(function () {
+    return this.reactions.length;
+});
+
+const Thought = model('thought', thoughtSchema);
+
+
+module.exports = Thought;
 
