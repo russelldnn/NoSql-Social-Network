@@ -1,0 +1,27 @@
+{
+  "name": "nosql-social-network",
+  "version": "1.0.0",
+  "description": "nosql back end for a social network",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/russelldnn/NoSql-Social-Network.git"
+  },
+  "keywords": [
+    "nosql"
+  ],
+  "author": "Russell Dunn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/russelldnn/NoSql-Social-Network/issues"
+  },
+  "homepage": "https://github.com/russelldnn/NoSql-Social-Network#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.5.0"
+  }
+}
