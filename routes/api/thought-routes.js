@@ -11,8 +11,7 @@ const {
     deleteReaction,
 } = require('../../controllers/thought-cont');
 
-//base get route
-router.route('/').get(getThoughts);
+
 //post route
 router.route('/').get(getThoughts).post(addThought);
 

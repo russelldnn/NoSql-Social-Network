@@ -51,11 +51,8 @@ const userCont = {
   
   deleteUser({ params }, res) {
     User.findOneAndDelete({ _id: params.id })
-      .then(() => {
-        return Thought.deleteMany({ _id: { $in: dbUserData.thoughts } });
-      })
-    
-      .catch((err) => {throw err});
+    .then((data) => {res.json(data)})
+    .catch((err) => {throw err});
   },
 
   

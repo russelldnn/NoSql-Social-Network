@@ -7,14 +7,14 @@ const thoughtCont = {
         .populate ({
             path: 'reactions',
             //got help with the select
-            select: "-__v"
+            select: "-__v",
+        })
+            .select("-__v")
             .sort({ _id: -1})
             .then ((data) => res.json(data))
-            .catch ((err) => {
-                throw err;
-            })
-        });
-    },
+            .catch ((err) => {throw err;})
+        },
+    
 
 
     getThoughtById({ params}, res) {
@@ -95,5 +95,6 @@ const thoughtCont = {
 
      
 };
+
 
 module.exports = thoughtCont;
