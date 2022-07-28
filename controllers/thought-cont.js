@@ -23,7 +23,7 @@ const thoughtCont = {
             path: 'reactions',
             select: '-__v'
         })
-        .select: '-__v'
+        .select('-__v')
         .then((data) => res.json (data))
         .catch ((err) => {
             throw err;
@@ -44,6 +44,19 @@ const thoughtCont = {
             throw err;
         });
     },
+
+
+    updateThought({ params, body }, res) {
+        Thought.findOneAndUpdate({ _id: params.id }, body, {
+          new: true,
+          runValidators: true,
+        })
+          .then((data) => {res.json(data);
+          })
+          .catch((err) => { throw err});
+      },
+
+
 
     deleteThought({ params }, res) {
         Thought.findOneAndDelete({ _id: params.id })
